@@ -1,0 +1,67 @@
+<div class="container">
+  
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Crypto Market</h1>
+
+      <input
+        type="text"
+        placeholder="Search a Coin"
+        class="form-control bg-dark text-light border-0 my-4 text-center"
+        autofocus
+        (keyup)="busquedaCoins()"
+        [(ngModel)]="busquedaText"
+      />
+
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <td *ngFor="let title of Titles">
+              {{ title }}
+            </td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let coin of filtercoins; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <img
+                [src]="coin.image"
+                alt="{{ coin.name }}"
+                style="width: 2rem"
+                class="img-fluid me-4"
+              />
+              <span>{{ coin.name }}</span>
+              <span class="ms-3 text-muted text-uppercase">{{ coin.symbol }}</span>
+            </td>
+            <td>{{ coin.current_price.toLocaleString() }}</td>
+
+            <td
+              [ngClass]="
+                coin.price_change_percentage_24h > 0
+                  ? 'text-success'
+                  : 'text-danger'
+              "
+            >
+              {{ coin.price_change_percentage_24h }}
+            </td>
+            <td>{{ coin.total_volume.toLocaleString() }}</td>
+            <td >
+              
+                <a [routerLink]="['/informacion', coin.id]" target="_blank" >
+                  <i class="bi bi-arrow-up-right-square" style="cursor: pointer; font-size: 1.8rem;" ></i>
+                </a>
+                
+            </td>
+          </tr>
+
+          
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

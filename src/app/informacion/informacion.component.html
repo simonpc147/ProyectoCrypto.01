@@ -1,0 +1,31 @@
+<style>
+
+    li {
+        padding: 15px;
+        list-style: circle;
+        font-size: 25px;
+    }
+</style>
+
+<div class="container">
+          
+                  <h1>Criptomoneda: </h1>
+                    <br>
+                    <ul>
+                        <img [src]="Crypto.image.small" style="width: 50px;" alt="">
+                        <span> {{ Crypto.symbol }}</span>
+                        <span> {{ Crypto.name }}</span>
+                        
+                    </ul>
+                    <ul><h2> Precio Actual: {{Crypto.market_data.current_price.usd | number}} </h2></ul>
+                    <li> Capitalización de Mercado: {{ Crypto.market_data.market_cap_change_24h | number}} </li>
+                    <li> Suministro Circulante: {{ Crypto.market_data.circulating_supply | number}} </li>
+                    <li> Suministro Total: {{ Crypto.market_data.max_supply | number}} </li>
+              
+       
+                    
+</div>
+
+ <!-- <pre>
+    {{Crypto | json}}
+ </pre> -->
